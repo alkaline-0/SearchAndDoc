@@ -1,7 +1,9 @@
-from fastapi import FastAPI
 import asyncio
 import os
+
 from dotenv import load_dotenv
+from fastapi import FastAPI
+
 import utils.discord_bot
 
 app = FastAPI()
