@@ -1,5 +1,5 @@
 [project]
-name = "searchanddoc"
+name = "main"
 version = "0.1.0"
 description = ""
 authors = [
@@ -7,7 +7,9 @@ authors = [
 ]
 packages = [
     { include = "./tests" },
-    { include = "./utis" },
+    { include = "./views" },
+    { include = "./helpers" },
+    { include = "./models" },
 ]
 readme = "README.md"
 requires-python = ">=3.13"

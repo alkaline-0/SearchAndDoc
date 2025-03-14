@@ -2,7 +2,6 @@ import discord
 
 class Channel:
   channel: discord.channel
-  msgs: []
   
   def __init__(self, channel: discord.channel):
     self.channel = channel
@@ -10,10 +9,10 @@ class Channel:
   async def get_channel_messages(self) -> list[discord.Message]:
     messages = []
     # Discord documentation, if it's blocking
+    print("Fuck my life")
     async for message in self.channel.history(limit=None):
       messages.append(message)
     
-    self.msgs = messages
     return messages
 
 # Squence diagram with different Actors // Use mermaid with the code 
