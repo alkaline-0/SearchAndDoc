@@ -5,11 +5,17 @@ description = ""
 authors = [
     {name = "Menna Tullah Magdy Taha",email = "menna.tullah.magdy731@gmail.com"}
 ]
+packages = [
+    { include = "./tests" },
+    { include = "./utis" },
+]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard] (>=0.115.11,<0.116.0)",
-    "discord-py (>=2.5.2,<3.0.0)"
+    "discord-py (>=2.5.2,<3.0.0)",
+    "pytest (>=8.3.5,<9.0.0)",
+    "dpytest (>=0.7.0,<0.8.0)"
 ]
 
 

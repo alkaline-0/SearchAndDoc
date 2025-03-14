@@ -8,9 +8,9 @@ _intents.message_content = True
 
 client = commands.Bot(intents=_intents, command_prefix="!")
 
-
-async def run(token: str):
+async def run(bot: any, token: str):
   try:
-    await client.start(token)
+    await bot.start(token)
   except KeyboardInterrupt:
-    await client.logout()
+    await bot.logout()
+
