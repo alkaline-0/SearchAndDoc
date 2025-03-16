@@ -1,13 +1,16 @@
 services:
   solr:
-    image: solr
+    image: solr:latest
     ports:
-     - "8983:8983"
+      - "8983:8983"
     volumes:
-      - data:/var/solr
-    command:
-      - solr-precreate
-      - gettingstarted
-volumes:
-  data:
+      - ./solr_data:/opt/solr/server/solr/mycores
+    environment:
+      SOLR_HOME: /opt/solr/server/solr
+      SOLR_DATA_HOME: /opt/solr/server/solr/mycores # Ensure this matches the volume mount.
+      SOLR_HOST: solr
+      SOLR_PORT: 8983
+      SOLR_OPTS: "-Dsolr.allow.unsafe.resourceloading=true" #optional, for some confi
 
+volumes:
+  solr_data:
