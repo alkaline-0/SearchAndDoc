@@ -1,16 +1,22 @@
+version: '3.8'
 services:
   solr:
-    image: solr:latest
+    image: solr:9-slim
     ports:
       - "8983:8983"
+    networks: [search]
+    environment:
+      ZK_HOST: "zoo:2181"
+    depends_on: [zoo]
     volumes:
       - ./solr_data:/opt/solr/server/solr/mycores
-    environment:
-      SOLR_HOME: /opt/solr/server/solr
-      SOLR_DATA_HOME: /opt/solr/server/solr/mycores # Ensure this matches the volume mount.
-      SOLR_HOST: solr
-      SOLR_PORT: 8983
-      SOLR_OPTS: "-Dsolr.allow.unsafe.resourceloading=true" #optional, for some confi
 
-volumes:
-  solr_data:
+  zoo:
+    image: zookeeper:3.9
+    networks: [search]
+    environment:
+      ZOO_4LW_COMMANDS_WHITELIST: "mntr,conf,ruok"
+
+networks:
+  search:
+    driver: bridge
